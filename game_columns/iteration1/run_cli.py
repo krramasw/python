@@ -32,14 +32,24 @@ if __name__ == '__main__' :
         cliUi = CliUi(grid)
         cliUi.run()
 
-    elif mode == "RANDOM" :
+
+
+    elif mode == "TEST" :
 
         rows = 8
         columns = 4
 
         grid = Grid(rows, columns)
         cliUi = CliUi(grid)
-        cliUi.run()
+
+        test_board = ["F 3 X Y Z", "F 2 S S Z", "F 1 A B Z"]
+
+        for step in test_board:
+
+            if cliUi.run(step) == "GAME_OVER":
+                print("Game over... Exiting..")
+                exit(1)
+
 
     else :
         print("Not Valid option")
