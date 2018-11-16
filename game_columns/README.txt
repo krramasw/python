@@ -18,9 +18,10 @@ Project Status
 
 	iteration 0 	:   Completed. Columns_Game_High_Level_Design_And_Planning.pptx is checked in for review
 	
-	iteration 1	:   In progress. 
+	iteration 1	:   Completed. 
 
-	iteration 2 	:   TBD
+	iteration 2 	:   In Progesss
+
 	iteration 3 	:   TBD
 	iteration 4 	:   TBD
 	iteration 5 	:   TBD
