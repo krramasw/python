@@ -17,12 +17,25 @@ class CliUi(object) :
     def run(self, user_input=None):
 
         while True:
-            ## Dummy or No implementation
+
+            ## Dummy or Partial implementation
+
             self.process_user_input(user_input)
             self.grid.intialize_faller()
+            self.grid.dump()
             self.grid.descend(self)
+
             if self.grid.check_match() :
                 self.grid.descend(self)
+
+            if self.grid.faller.frozen :
+                return "FALLER_FROZEN"
+
+            if self.grid.is_game_over() :
+                return "GAME_OVER"
+
+            time.sleep(1)
+
 
 
     def process_user_input(self,user_input):
@@ -36,7 +49,15 @@ class CliUi(object) :
             print("")
 
         elif user_input[:1] == "F":
-            print("")
+
+            words = user_input.split(" ")
+            col_faller = words[1]
+            c1 = words[2]
+            c2 = words[3]
+            c3 = words[4]
+
+            faller = Faller(col_faller, c1, c2, c3)
+            self.grid.faller = faller
 
         else:
             print("No such command exist")
@@ -56,4 +77,9 @@ if __name__ == '__main__' :
     cliUi = CliUi(grid)
 
     for step in test_board  :
-        cliUi.run(step)
+
+        if cliUi.run(step) == "GAME_OVER" :
+            print ("Game over... Exiting.." )
+            exit(1)
+
+    print (" Game Done ...")

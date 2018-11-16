@@ -10,16 +10,23 @@ class Grid(object) :
         self.state = [[" " for x in range(self.columns)] for y in range(self.rows)]
         self.faller=None
 
+
+    def dump(self):
+        print ("No of rows:", self.rows)
+        print ("No of columns", self.columns)
+        print ("State:")
+        print (self.state)
+
     def is_game_over(self):
 
         ## Dummy or No implementation
-        boolean = True
+        boolean = False
         return boolean
 
     def intialize_faller(self):
 
         r = int( self.rows)
-        c = int(self.faller.location_col)
+        c = int( self.faller.col_location)
 
         self.state[0][c] = self.faller.block1
         self.state[1][c] = self.faller.block2
