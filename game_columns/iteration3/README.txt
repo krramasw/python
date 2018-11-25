@@ -1,13 +1,26 @@
 
+Authod : Krishnan & H
 
-Aoutho : Krishnan 
-
-
-Project Description
+Iteration 3 Implementation summary
 
 
-Design and Implementation approach
+        In this iteration, we have implemented
 
-    We are following iterative approach to design and implementation.  We will start defining object/modules and dummy interfaces and keep adding feature in each iteration.
-    For this project, there are total of 7 iterations. Please look in to each iteration sub directory for more details
+                descend.py and check_match.py
 
+                of Grid.py
+
+
+
+
+How to Run ?
+
+        cd to ./iteration1 directory
+
+        python run_cli.py
+
+        enter "TEST" as the mode
+
+        now run_cli.py will simulate steps for actions ["F 3 X Y Z", "F 2 S S Z", "F 1 A B Z"]
+
+        You will see the state of Grid getting dumped
