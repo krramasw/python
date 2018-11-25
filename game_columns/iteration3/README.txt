@@ -11,6 +11,25 @@ Iteration 3 Implementation summary
                 of Grid.py
 
 
+        Note that we HAVE NOT implemented all the functionality needed in
+            descend()
+            check_match()
+
+
+        In this iteration
+
+            descend()
+                In this iteration, we have implemented state adjustment of Falling of current Faller. We YET to implement another method (let us call)
+                decend_for_other_columns(), when a check_match is true.  We will implement decend_for_other_columns() in iteration 4
+
+
+            check_match()
+                In this iteration, we have implemented only Horizontal match. We YET to implement vertical and diagonal match. We will implement the horizontal and
+                diagonal match in iteration 4
+
+
+
+
 
 
 How to Run ?
