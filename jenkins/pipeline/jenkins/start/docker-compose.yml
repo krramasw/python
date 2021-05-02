@@ -1,0 +1,13 @@
+version: '3'
+services:
+  maven-project:
+
+    container_name: maven-project
+    image: containers.cisco.com/krramasw/maven-project:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - net
+
+networks:
+  net:

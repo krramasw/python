@@ -1,0 +1,74 @@
+pipeline {
+
+	    agent any
+
+	    stages {
+	        
+	         stage('Checkout external proj') {
+                steps {
+                    git branch: 'master',
+                        url: 'https://wwwin-github.cisco.com/krramasw/jenkins_test.git'
+
+
+                    sh "ls -lat"
+                    sh "find . -print"
+                }
+            }
+    
+    
+	        stage('Chcek env') {
+	            steps {
+	                echo sh(returnStdout: true, script: 'env')
+	                echo 'Performinging a Build.'
+	            }
+	        }
+	        
+	        
+	        
+	        stage('Build') {
+            steps {
+                sh '''
+                    cd ./jenkins/pipeline
+                    ./jenkins/build/mvn.sh mvn -B -DskipTests clean package
+                    ./jenkins/build/build.sh
+
+                '''
+            }
+
+            post {
+                success {
+                   archiveArtifacts artifacts: 'jenkins/pipeline/java-app/target/*.jar', fingerprint: true
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+     
+                sh './jenkins/pipeline/jenkins/test/mvn.sh mvn test'
+            }
+
+            post {
+                always {
+                   
+                    junit 'jenkins/pipeline/java-app/target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+        stage('Push') {
+            steps {
+                sh './jenkins/pipeline/jenkins/push/push.sh'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh './jenkins/pipeline/jenkins/deploy/deploy.sh'
+            }
+        }
+        
+        
+        
+	    }
+}
